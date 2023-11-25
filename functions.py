@@ -132,13 +132,8 @@ def nombre_de_mot(dossier):
 
 
 def calculer_idf(repertoire_corpus):
-    # Initialiser un dictionnaire pour stocker le nombre de documents contenant chaque mot
     documents_contenant_mot = {}
-
-    # Initialiser le compteur total de documents dans le corpus
     total_documents = 0
-
-    # Parcourir chaque fichier dans le répertoire du corpus
     for nom_fichier in os.listdir(repertoire_corpus):
         chemin_fichier = os.path.join(repertoire_corpus, nom_fichier)
 
