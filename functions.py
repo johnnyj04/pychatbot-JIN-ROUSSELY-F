@@ -85,37 +85,21 @@ def tf(dossier):
     return resultats
 
 
-def calculer_idf(repertoire_corpus):
-    # Initialiser un dictionnaire pour stocker le nombre de documents contenant chaque mot
+def idf(repertoire_corpus):
     documents_contenant_mot = {}
-
-    # Initialiser le compteur total de documents dans le corpus
-    total_documents = 0
-
-    # Parcourir chaque fichier dans le répertoire du corpus
+    total = 0
     for nom_fichier in os.listdir(repertoire_corpus):
         chemin_fichier = os.path.join(repertoire_corpus, nom_fichier)
-
-        # Ignorer les sous-répertoires
         if os.path.isfile(chemin_fichier):
-            total_documents += 1
-
-            # Lire le contenu du fichier, diviser en mots
+            total += 1
             with open(chemin_fichier, 'r') as fichier:
                 mots = fichier.read().split()
-
-                # Mettre à jour le dictionnaire des documents contenant chaque mot
                 for mot in set(mots):
                     documents_contenant_mot[mot] = documents_contenant_mot.get(mot, 0) + 1
-
-    # Calculer le score IDF pour chaque mot
     idf_scores = {}
     for mot, documents_contenant in documents_contenant_mot.items():
-        idf_scores[mot] = math.log10(total_documents / (1 + documents_contenant))
-
-    # Retourner le dictionnaire des scores IDF
+        idf_scores[mot] = math.log10(total / (1 + documents_contenant))
     return idf_scores
 
 
-    contenu_modifie = contenu_sans_ponctuation.replace("'", ' ').replace('-', ' ')
 
