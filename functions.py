@@ -1,7 +1,7 @@
 import os
 import math
 
-
+#fonction qui sert à extraire les noms des fichiers
 def list_of_files(directory, extension):
     files_names = []
     for filename in os.listdir(directory):
@@ -9,7 +9,7 @@ def list_of_files(directory, extension):
             files_names.append(filename)
     return files_names
 
-
+#fonctions qui permet d'extraire les noms des présidents
 def extraction():
     d=['1','2','3','4','5','6','7','8','9']
     nom_f = list_of_files("./speeches",".txt")
@@ -20,7 +20,7 @@ def extraction():
                 nom_f[i] = nom_f[i][:-1]
     return(nom_f)
 
-
+#fonctions permettant d'eliminer les doublons dans la liste des noms des présidents
 def doublon():
     d = extraction()
     s=[]
@@ -37,11 +37,13 @@ dico_presidents = {
     'Mitterand': 'François',
     'Sarkozy': 'Nicolas',}
 
+#fonctions qui va faire des nouveaux fichiers à partir des anciennes toute en remplassant les lettre majuscule en minuscule
+#et aussi les lettres avec des accents sans accents et en supprimant les ponctuations
 def conv_en_minuscule():
     speeches = r'C:\Users\johnn\PycharmProjects\pythonProject2\venv\speeches'
     cleaned = r'C:\Users\johnn\PycharmProjects\pythonProject2\venv\Cleaned'
     a={".", ",", ";", "!", "?", "(", ")", ":", "/"}
-    for nom_f in os.listdir(speeches):
+    for nom_f in os.listdir(speeches):                   #boucle qui permet d'aller dans les fichiers dans le répértoire "Speeches"
         f_entree = os.path.join(speeches, nom_f)
         with open(f_entree, 'r',encoding='utf-8' ) as f:
             m = ''
@@ -64,7 +66,7 @@ def conv_en_minuscule():
 
 
 
-
+#fonctions qui permet de conter le nombre d'occurences d'un mot dans un texte
 def tf(b):
     resultats = {}
     d = 0
@@ -84,21 +86,21 @@ def tf(b):
 
     return resultats
 
-
-def idf(repertoire_corpus):
+#fonctions qui permet de calculer la fréquence d'un mot dans les textes et plus elle est élévée moins elle est fréquente
+def idf(A):
     occurences = {}
     total = 0
-    for nom_fichier in os.listdir(repertoire_corpus):
-        chemin_fichier = os.path.join(repertoire_corpus, nom_fichier)
-        if os.path.isfile(chemin_fichier):
+    for nom_f in os.listdir(A):
+        cf = os.path.join(A, nom_f)
+        if os.path.isfile(cf):
             total += 1
-            with open(chemin_fichier, 'r') as fichier:
-                mots = fichier.read().split()
+            with open(cf, 'r') as f:
+                mots = f.read().split()
                 for mot in set(mots):
                     occurences[mot] = occurences.get(mot, 0) + 1
     idf_scores = {}
-    for mot, documents_contenant in occurences.items():
-        idf_scores[mot] = math.log10(total / ( documents_contenant+1))
+    for mot, doc in occurences.items():
+        idf_scores[mot] = math.log10(total / ( doc+1))
     return idf_scores
 
 
