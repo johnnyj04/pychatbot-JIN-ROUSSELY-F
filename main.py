@@ -6,8 +6,8 @@ conv_en_minuscule()
 occurence = tf(r'C:\Users\johnn\PycharmProjects\pythonProject2\venv\Cleaned')
 print(occurence)
 
-repertoire_corpus_test = r'C:\Users\johnn\PycharmProjects\pythonProject2\venv\Cleaned'
-resultat_idf = idf(repertoire_corpus_test)
+h = r'C:\Users\johnn\PycharmProjects\pythonProject2\venv\Cleaned'
+resultat_idf = idf(h)
 print(resultat_idf)
 
 

@@ -65,12 +65,12 @@ def conv_en_minuscule():
 
 
 
-def tf(dossier):
+def tf(b):
     resultats = {}
     d = 0
-    fichiers = [f for f in os.listdir(dossier) if os.path.isfile(os.path.join(dossier, f))]
+    fichiers = [f for f in os.listdir(b) if os.path.isfile(os.path.join(b, f))]
     for fichier in fichiers:
-        cf = os.path.join(dossier, fichier)
+        cf = os.path.join(b, fichier)
         with open(cf, 'r') as f:
             contenu = f.read()
             chaines = contenu.split(" ")
@@ -86,7 +86,7 @@ def tf(dossier):
 
 
 def idf(repertoire_corpus):
-    documents_contenant_mot = {}
+    occurences = {}
     total = 0
     for nom_fichier in os.listdir(repertoire_corpus):
         chemin_fichier = os.path.join(repertoire_corpus, nom_fichier)
@@ -95,10 +95,10 @@ def idf(repertoire_corpus):
             with open(chemin_fichier, 'r') as fichier:
                 mots = fichier.read().split()
                 for mot in set(mots):
-                    documents_contenant_mot[mot] = documents_contenant_mot.get(mot, 0) + 1
+                    occurences[mot] = occurences.get(mot, 0) + 1
     idf_scores = {}
-    for mot, documents_contenant in documents_contenant_mot.items():
-        idf_scores[mot] = math.log10(total / (1 + documents_contenant))
+    for mot, documents_contenant in occurences.items():
+        idf_scores[mot] = math.log10(total / ( documents_contenant+1))
     return idf_scores
 
 
