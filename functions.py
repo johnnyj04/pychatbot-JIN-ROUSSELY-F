@@ -85,20 +85,20 @@ def tf(b):
     return resultats
 
 
-def idf(repertoire_corpus):
+def idf(A):
     occurences = {}
     total = 0
-    for nom_fichier in os.listdir(repertoire_corpus):
-        chemin_fichier = os.path.join(repertoire_corpus, nom_fichier)
-        if os.path.isfile(chemin_fichier):
+    for nom_f in os.listdir(A):
+        cf = os.path.join(A, nom_f)
+        if os.path.isfile(cf):
             total += 1
-            with open(chemin_fichier, 'r') as fichier:
-                mots = fichier.read().split()
+            with open(cf, 'r') as f:
+                mots = f.read().split()
                 for mot in set(mots):
                     occurences[mot] = occurences.get(mot, 0) + 1
     idf_scores = {}
-    for mot, documents_contenant in occurences.items():
-        idf_scores[mot] = math.log10(total / ( documents_contenant+1))
+    for mot, doc in occurences.items():
+        idf_scores[mot] = math.log10(total / ( doc+1))
     return idf_scores
 
 
