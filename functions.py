@@ -67,25 +67,16 @@ def conv_en_minuscule():
 
 
 #fonctions qui permet de conter le nombre d'occurences d'un mot dans un texte
-def tf(b):
+def tf(c):
+    z = c.read()
     resultats = {}
-    d = 0
-    fichiers = [f for f in os.listdir(b) if os.path.isfile(os.path.join(b, f))]
-    for fichier in fichiers:
-        cf = os.path.join(b, fichier)
-        with open(cf, 'r') as f:
-            contenu = f.read()
-            chaines = contenu.split(" ")
-            for mot in chaines:
-                if "\n" in mot:
-                    mot=mot[:-1]
-                if mot in resultats:
-                    resultats[mot]+=1
-                else:
-                    resultats[mot] = 1
-
+    mot = z.split()
+    for m in mot :
+        if m in resultats :
+            resultats[m]+= 1
+        else :
+            resultats[m] = 1
     return resultats
-
 #fonctions qui permet de calculer la fréquence d'un mot dans les textes et plus elle est élévée moins elle est fréquente
 def idf(A):
     occurences = {}
