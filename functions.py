@@ -81,21 +81,14 @@ def tf(c):
 
 #fonctions qui permet de calculer la fréquence d'un mot dans les textes et plus elle est élévée moins elle est fréquente
 
-def idf(A):
-    occurences = {}
-    total = 0
-    for nom_f in os.listdir(A):
-        cf = os.path.join(A, nom_f)
-        if os.path.isfile(cf):
-            total += 1
-            with open(cf, 'r') as f:
-                mots = f.read().split()
-                for mot in set(mots):
-                    occurences[mot] = occurences.get(mot, 0) + 1
-    idf_scores = {}
-    for mot, doc in occurences.items():
-        idf_scores[mot] = math.log10(total / ( doc+1))
-    return idf_scores
-
-
-
+def Idf(d):
+    idf_s={}
+    for i in d.keys():
+       for j in d[i]:
+          if j in idf_s:
+            idf_s[j]+=1
+          else:
+            idf_s[j]=1
+    for a in idf_s.keys():
+            idf_s[a]=math.log10((len(a)/idf_s[a])+1)
+    return idf_s
