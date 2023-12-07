@@ -20,5 +20,6 @@ print(Grand_tf)
 
 resultat_idf = Idf(Grand_tf)
 print(resultat_idf)
-
+res=TF_IDF(Grand_tf,resultat_idf)
+print(res)
 
