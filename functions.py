@@ -94,12 +94,19 @@ def Idf(d):
     return idf_s
 
 
-def TF_IDF(tf,idf):
-    score={}
-    for nom_texte in tf.keys():
-        score_tfidf={}
-        for mot in tf[nom_texte].keys():
-            score_tfidf[mot]=tf[nom_texte][mot]*idf[mot]
-        score[nom_texte]=score_tfidf
-    return score
-
+def TF_IDF(A):
+    L=Idf(A)
+    Matrice=[]
+    id=0
+    cleaned = r'C:\pychatbot\Cleaned'
+    for mot in L:
+        Matrice.append([])
+        for file  in list_of_files("./cleaned",".txt" ) :
+            with open(cleaned + "/" + file , "r")as f :
+                d=tf(f)
+            if mot in d:
+                Matrice[id].append(d[mot]*L[mot])
+            else:
+                Matrice[id].append(0.0)
+        id = id + 1
+    return Matrice
