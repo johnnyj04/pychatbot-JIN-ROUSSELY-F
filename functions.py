@@ -111,12 +111,17 @@ def TF_IDF(A):
 
 
 def nn_important(B):
-    Liste_de_mot=Idf(B)
+    Liste_de_mot=TF_IDF(B)
     mot_pas_important=[]
     for g,i in Liste_de_mot.items():
-            if i == 0.0:
+            d=0
+            for h in i:
+                    if h==0.0:
+                       d+=1
+            if d == 8 :
                 mot_pas_important.append(g)
     return mot_pas_important
+
 
 
 def m_score_plus_elevé(H):

@@ -25,5 +25,6 @@ print(res)
 Mot_pas_important=nn_important(Grand_tf)
 print(Mot_pas_important)
 
-Mot_important=m_score_plus_elevé(Grand_tf)
-print(Mot_important)
+
+#Mot_important=m_score_plus_elevé(Grand_tf)
+#print(Mot_important)
