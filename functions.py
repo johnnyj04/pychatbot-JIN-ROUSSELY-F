@@ -96,19 +96,17 @@ def Idf(d):
 
 def TF_IDF(A):
     L=Idf(A)
-    Matrice=[]
-    id=0
+    Matrice={}
     cleaned = r'C:\pychatbot\Cleaned'
     for mot in L:
-        Matrice.append([])
+        Matrice[mot]=[]
         for file  in list_of_files("./cleaned",".txt" ) :
             with open(cleaned + "/" + file , "r")as f :
                 d=tf(f)
             if mot in d:
-                Matrice[id].append(d[mot]*L[mot])
+                Matrice[mot].append(d[mot]*L[mot])
             else:
-                Matrice[id].append(0.0)
-        id = id + 1
+                Matrice[mot].append(0.0)
     return Matrice
 
 
@@ -132,5 +130,3 @@ def m_score_plus_elevé(H):
             elif score==scoremax:
                 mot.append(mots)
         return mot
-
-
