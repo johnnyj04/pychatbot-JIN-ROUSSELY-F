@@ -16,10 +16,14 @@ for nom_f in os.listdir(d):
 print(Grand_tf)
 
 
-
-
 resultat_idf = Idf(Grand_tf)
 print(resultat_idf)
 res=TF_IDF(Grand_tf)
 print(res)
 
+
+Mot_pas_important=nn_important(Grand_tf)
+print(Mot_pas_important)
+
+Mot_important=m_score_plus_elevé(Grand_tf)
+print(Mot_important)

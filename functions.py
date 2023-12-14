@@ -110,3 +110,27 @@ def TF_IDF(A):
                 Matrice[id].append(0.0)
         id = id + 1
     return Matrice
+
+
+def nn_important(B):
+    Liste_de_mot=Idf(B)
+    mot_pas_important=[]
+    for g,i in Liste_de_mot.items():
+            if i == 0.0:
+                mot_pas_important.append(g)
+    return mot_pas_important
+
+
+def m_score_plus_elevé(H):
+        Liste_de_mot = Idf(H)
+        mot = []
+        scoremax = 0.0
+        for mots, score in Liste_de_mot.items():
+            if score > scoremax:
+                mot.append(mots)
+                scoremax = score
+            elif score==scoremax:
+                mot.append(mots)
+        return mot
+
+
