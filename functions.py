@@ -170,12 +170,22 @@ def Nation():
                 if c == 'nation' or c == 'nations' or c == 'nation/n' or c == 'nation\n':
                     d.append(nom_f)
     g = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
     for i in range(len(d)):
         d[i] = d[i][11:-4]
         for j in range(len(d[i])):
             if d[i][j] in g:
                 d[i] = d[i][:-1]
-    return d
+    for k in range(len(d)):
+
+
+    doublon=[]
+    for double in d :
+        if double not in doublon :
+            doublon.append(double)
+    return doublon
+
+
 
 
 
