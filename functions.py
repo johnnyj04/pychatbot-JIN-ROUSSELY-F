@@ -176,8 +176,6 @@ def Nation():
         for j in range(len(d[i])):
             if d[i][j] in g:
                 d[i] = d[i][:-1]
-    for k in range(len(d)):
-
 
     doublon=[]
     for double in d :
