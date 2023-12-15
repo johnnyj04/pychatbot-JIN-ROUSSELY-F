@@ -137,7 +137,29 @@ def m_score_plus_elevé(H):
                    mot = mots
         return mot
 
+
 def Mot_plus_répétés_par_chirac():
+    a = r'C:\pychatbot\Cleaned\Nomination_Chirac1.txt'
+    b=r'C:\pychatbot\Cleaned\Nomination_Chirac2.txt'
+    with open(a, 'r') as f , open(b,'r') as f1 :
+        d=tf(f)
+        s=tf(f1)
+        q={}
+        for g,i in d.items():
+            for c,v in s.items():
+                if g == c :
+                    q[g]= i+v
+        mot = None
+        scoremax = 0
+        for mots, score in q.items():
+                if score > scoremax:
+                    scoremax = score
+                    mot = mots
+        return mot
+
+
+
+
 
 
 

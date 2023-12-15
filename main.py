@@ -23,3 +23,6 @@ print(Mot_pas_important)
 
 Mot_important=m_score_plus_elevé(Grand_tf)
 print(Mot_important)
+
+motpourchirac=Mot_plus_répétés_par_chirac()
+print(motpourchirac)
