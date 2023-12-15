@@ -93,7 +93,7 @@ def Idf(d):
             idf_s[a]=math.log10((len(d)/idf_s[a]))
     return idf_s
 
-
+#fonction pour la matrice TF_IDF
 def TF_IDF(A):
     L=Idf(A)
     Matrice={}
@@ -109,7 +109,7 @@ def TF_IDF(A):
                 Matrice[mot].append(0.0)
     return Matrice
 
-
+# fonction qui permet de renvoyer au mot les moins importants
 def nn_important(B):
     Liste_de_mot=TF_IDF(B)
     mot_pas_important=[]
@@ -123,7 +123,7 @@ def nn_important(B):
     return mot_pas_important
 
 
-
+#fonction qui permet de renvoyer le mot avec le plus score idf de tous les fichiers
 def m_score_plus_elevé(H):
         Liste_de_mot = TF_IDF(H)
         mot = None
@@ -137,7 +137,7 @@ def m_score_plus_elevé(H):
                    mot = mots
         return mot
 
-
+#fonction qui renvoie au mot le plus utiliser par chirac
 def Mot_plus_répétés_par_chirac():
     a = r'C:\pychatbot\Cleaned\Nomination_Chirac1.txt'
     b=r'C:\pychatbot\Cleaned\Nomination_Chirac2.txt'
@@ -156,6 +156,28 @@ def Mot_plus_répétés_par_chirac():
                     scoremax = score
                     mot = mots
         return mot
+
+#fonction qui permet de renvoyer tous les présidents qui ont parler de nation
+def Nation():
+    a = r'C:\pychatbot\Cleaned'
+    d=[]
+    for nom_f in os.listdir(a):
+        f_entree = os.path.join(a, nom_f)
+        with open(f_entree, 'r') as f:
+            z=f.read()
+            h=z.split()
+            for c in h:
+                if c == 'nation' or c == 'nations' or c == 'nation/n' or c == 'nation\n':
+                    d.append(nom_f)
+    g = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+    for i in range(len(d)):
+        d[i] = d[i][11:-4]
+        for j in range(len(d[i])):
+            if d[i][j] in g:
+                d[i] = d[i][:-1]
+    return d
+
+
 
 
 

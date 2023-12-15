@@ -26,3 +26,6 @@ print(Mot_important)
 
 motpourchirac=Mot_plus_répétés_par_chirac()
 print(motpourchirac)
+
+nation=Nation()
+print(nation)
