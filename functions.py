@@ -125,13 +125,19 @@ def nn_important(B):
 
 
 def m_score_plus_elevé(H):
-        Liste_de_mot = Idf(H)
-        mot = []
+        Liste_de_mot = TF_IDF(H)
+        mot = None
         scoremax = 0.0
         for mots, score in Liste_de_mot.items():
-            if score > scoremax:
-                mot.append(mots)
-                scoremax = score
-            elif score==scoremax:
-                mot.append(mots)
+           for d in score :
+               if d > scoremax:
+                   scoremax = d
+                   mot = mots
+               elif d == scoremax:
+                   mot = mots
         return mot
+
+def Mot_plus_répétés_par_chirac():
+
+
+
