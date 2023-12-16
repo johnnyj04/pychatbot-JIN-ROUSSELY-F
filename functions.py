@@ -181,11 +181,46 @@ def Nation():
     for double in d :
         if double not in doublon :
             doublon.append(double)
+    lpu={}
+    for i in d :
+        if i in lpu:
+            lpu[i]+=1
+        else:
+            lpu[i]=1
+    mot = None
+    scoremax = 0
+    for mots, score in lpu.items():
+        if score > scoremax:
+            scoremax = score
+            mot = mots
+    return doublon,mot
+
+
+def ecolo():
+    a = r'C:\pychatbot\Cleaned'
+    d = []
+    for nom_f in os.listdir(a):
+        f_entree = os.path.join(a, nom_f)
+        with open(f_entree, 'r') as f:
+            z = f.read()
+            h = z.split()
+            for c in h:
+                if c == 'climat' or c == 'ecologie' or c == 'ecologique' or c == 'climatique':
+                    d.append(nom_f)
+    g = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+    for i in range(len(d)):
+        d[i] = d[i][11:-4]
+        for j in range(len(d[i])):
+            if d[i][j] in g:
+                d[i] = d[i][:-1]
+
+    doublon = []
+    for double in d:
+        if double not in doublon:
+            doublon.append(double)
+
     return doublon
-
-
-
-
 
 
 
