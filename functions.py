@@ -196,6 +196,7 @@ def Nation():
     return doublon,mot
 
 #fonction qui permet de renvoyer tous les noms de présidents qui ont parler d'écologie
+#fonction repris de nation
 def ecolo():
     a = r'C:\pychatbot\Cleaned'
     d = []
@@ -227,4 +228,15 @@ def ecolo():
 
 
 
+
+
+#Partie 2
+
+def Tokenisation_de_la_Q():
+    Question=[]
+    d=input("quelle est votre question ?")
+    h = d.split()
+    for i in h :
+        Question.append(i)
+    print(Question)
 

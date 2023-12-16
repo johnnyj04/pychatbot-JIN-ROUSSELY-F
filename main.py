@@ -6,7 +6,10 @@ print("Appuyer sur 2 pour afficher le(s) mot(s) ayant le score TD-IDF le plus é
 print("Appuyer sur 3 pour savoir quel(s) mot(s) le président Chirac a le plus répété")
 print("Appuyer sur 4 pour indiquer le(s) nom(s) du (des) président(s) qui a (ont) parlé de la Nation et celui qui l’a répété le plus de fois")
 print("Appuyer sur 5 pour indiquer le(s) nom(s) du (des) président(s) qui a (ont) parlé du climat et/ou de l’écologie")
-n=int(input("Le numéro que vous voulez choisir :"))
+n = int(input("Le numéro que vous voulez choisir :"))
+while n >= 5 :
+    print("Vous devez choisir entre 1 , 2 , 3 , 4 , 5 ")
+    n = int(input("Le numéro que vous voulez choisir :"))
 print("Veuillez attendre quelques secondes")
 conv_en_minuscule()
 d = r'C:\Users\johnn\PycharmProjects\pythonProject2\venv\Cleaned'
@@ -51,3 +54,5 @@ while r==True:
             print("Le(s)président(s) qui a (ont) parlé de l'ecologie /climat est (sont) :", Ecologie)
     else :
         r=False
+
+Tokenisation_de_la_Q()
