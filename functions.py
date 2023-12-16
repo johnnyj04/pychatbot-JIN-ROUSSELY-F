@@ -157,7 +157,7 @@ def Mot_plus_répétés_par_chirac():
                     mot = mots
         return mot
 
-#fonction qui permet de renvoyer tous les présidents qui ont parler de nation
+#fonction qui permet de renvoyer tous les noms de présidents qui ont parler de nation et du celui qui en à le plus parler
 def Nation():
     a = r'C:\pychatbot\Cleaned'
     d=[]
@@ -195,7 +195,7 @@ def Nation():
             mot = mots
     return doublon,mot
 
-
+#fonction qui permet de renvoyer tous les noms de présidents qui ont parler d'écologie
 def ecolo():
     a = r'C:\pychatbot\Cleaned'
     d = []
