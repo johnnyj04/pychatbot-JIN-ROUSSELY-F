@@ -293,6 +293,22 @@ def mot_dans_le_corpus(listedemot):
     return Mots_dans_corpus
 
 
-
+def calcul_de_vecteur(motdanslecorpus,A):
+    resultats={}
+    matrice={}
+    d = mot_dans_le_corpus(motdanslecorpus)
+    for m in motdanslecorpus:
+        if m in resultats and m in d:
+            resultats[m] += 1
+        elif m not in resultats and m in d:
+            resultats[m] = 1
+    a=Idf(A)
+    for mot in resultats:
+        matrice[mot]=[]
+        if mot in matrice:
+                matrice[mot].append(resultats[mot]*a[mot])
+        else:
+                matrice[mot].append(0.0)
+    return matrice
 
 

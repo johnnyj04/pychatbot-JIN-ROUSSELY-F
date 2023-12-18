@@ -87,6 +87,8 @@ while r==True:
 
 question=input("quelle est votre question ?")
 Questions=Tokenisation_de_la_Q(question)
-print(Questions)
 mot_présent=mot_dans_le_corpus(Questions)
 print('les mots présent dans le corpus sont :',mot_présent)
+
+vect=calcul_de_vecteur(Questions,Grand_tf)
+print('le(s) score(s) TF-IDF est (sont):',vect)
