@@ -292,7 +292,7 @@ def mot_dans_le_corpus(listedemot):
 
     return Mots_dans_corpus
 
-
+#fonction qui permet de renvoyer le score TF-IDF des mots de la question qui sont dans le corpus
 def calcul_de_vecteur(motdanslecorpus,A):
     resultats={}
     matrice={}
@@ -302,7 +302,7 @@ def calcul_de_vecteur(motdanslecorpus,A):
             resultats[m] += 1
         elif m not in resultats and m in d:
             resultats[m] = 1
-    a=Idf(A)
+    a=TF_IDF(A)
     for mot in resultats:
         matrice[mot]=[]
         if mot in matrice:
