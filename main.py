@@ -84,4 +84,9 @@ while r==True:
 
         r=False
 
-Tokenisation_de_la_Q()
+
+question=input("quelle est votre question ?")
+Questions=Tokenisation_de_la_Q(question)
+print(Questions)
+mot_présent=mot_dans_le_corpus(Questions)
+print(mot_présent)

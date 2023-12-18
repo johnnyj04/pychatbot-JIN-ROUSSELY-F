@@ -257,11 +257,10 @@ def minuscule(texte):
 
 
 #fonction qui permet de convertir les majuscule , enlever les signes de ponctuation ,enlever les accents et enfin va renvoyer la question dans une liste
-def Tokenisation_de_la_Q():
+def Tokenisation_de_la_Q(question):
     Question=[]
-    d=input("quelle est votre question ?")
     Question_nettoye=''
-    for ponctuation in d :
+    for ponctuation in question :
         if ponctuation in [',','.','?',';',':','!']:
             ponctuation=''
         elif ponctuation in ["'","-"]:
@@ -272,8 +271,23 @@ def Tokenisation_de_la_Q():
     h = Question_nettoye.split()
     for i in h :
              Question.append(i)
-    print(Question)
+    return Question
 
+#fonction qui permet de renvoyer les mots trouvés dans le corpus
+def mot_dans_le_corpus(listedemot):
+    Mots_dans_corpus=[]
+    mot_double=[]
+    d=r'C:\pychatbot\Cleaned'
+    for mot in os.listdir(d):
+        f_entree = os.path.join(d, mot)
+        with open(f_entree, 'r') as f:
+            texte = f.read()
+            mots = texte.split()
+            for i in mots :
+                if i in listedemot:
+                    mot_double.append(i)
+            for doublemot in mot_double :
+                if doublemot not in Mots_dans_corpus:
+                    Mots_dans_corpus.append(doublemot)
 
-
-
+    return Mots_dans_corpus
