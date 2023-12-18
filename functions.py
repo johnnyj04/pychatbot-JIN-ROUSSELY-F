@@ -309,6 +309,7 @@ def calcul_de_vecteur(motdanslecorpus,A):
                 matrice[mot].append(resultats[mot]*a[mot])
         else:
                 matrice[mot].append(0.0)
+
     return matrice
 
 
