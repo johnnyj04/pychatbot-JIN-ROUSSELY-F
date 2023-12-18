@@ -291,3 +291,8 @@ def mot_dans_le_corpus(listedemot):
                     Mots_dans_corpus.append(doublemot)
 
     return Mots_dans_corpus
+
+
+
+
+
