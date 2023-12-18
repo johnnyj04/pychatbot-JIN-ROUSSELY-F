@@ -231,12 +231,49 @@ def ecolo():
 
 
 #Partie 2
+# fonction qui permet de convertir en minuscule et d'enlever les accents(pas demandé)
+def minuscule(texte):
+    d=''
+    for lettre in texte:
+        s=''
+        if 65 <= ord(lettre) <= 90:
+                s+=chr(ord(lettre)+32)
+        elif lettre == 'é' or lettre == 'è' or lettre == 'ê' or lettre == 'ë':
+            s += 'e'
+        elif lettre == 'à' or lettre == 'â':
+            s += 'a'
+        elif lettre == 'ù' or lettre == 'û' :
+            s += 'u'
+        elif lettre == 'ï':
+            s += 'i'
+        elif lettre == 'ç':
+            s += 'c'
+        else:
+            s+= lettre
+        d+=s
+    return d
 
+
+
+
+#fonction qui permet de convertir les majuscule , enlever les signes de ponctuation ,enlever les accents et enfin va renvoyer la question dans une liste
 def Tokenisation_de_la_Q():
     Question=[]
     d=input("quelle est votre question ?")
-    h = d.split()
+    Question_nettoye=''
+    for ponctuation in d :
+        if ponctuation in [',','.','?',';',':','!']:
+            ponctuation=''
+        elif ponctuation in ["'","-"]:
+            ponctuation= ' '
+        else :
+            ponctuation=minuscule(ponctuation)
+        Question_nettoye+=ponctuation
+    h = Question_nettoye.split()
     for i in h :
-        Question.append(i)
+             Question.append(i)
     print(Question)
+
+
+
 
